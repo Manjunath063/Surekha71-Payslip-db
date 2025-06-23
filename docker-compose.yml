@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:13
+    container_name: surekha71-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: payslip_db
+    ports:
+      - "5426:5432"
+    volumes:
+      - pgdata71:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  backend:
+    build: ./Backend
+    container_name: surekha71-backend
+    ports:
+      - "3032:3032"
+    depends_on:
+      - postgres
+    environment:
+      - PORT=3032
+      - PGUSER=postgres
+      - PGPASSWORD=admin123
+      - PGDATABASE=payslip_db
+      - PGHOST=postgres
+      - PGPORT=5432
+
+  employee-side:
+    build: ./Employee-Side
+    container_name: surekha71-employee
+    ports:
+      - "8057:80"
+    depends_on:
+      - backend
+
+  hr-side:
+    build: ./HR-Side
+    container_name: surekha71-hr
+    ports:
+      - "8058:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata71:
+
