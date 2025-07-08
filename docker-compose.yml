@@ -9,7 +9,7 @@ services:
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: payslip_db
     ports:
-      - "5426:5432"
+      - "5609:5432"
     volumes:
       - pgdata71:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -18,7 +18,7 @@ services:
     build: ./Backend
     container_name: surekha71-backend
     ports:
-      - "3032:3032"
+      - "3609:3609"
     depends_on:
       - postgres
     environment:
@@ -33,7 +33,7 @@ services:
     build: ./Employee-Side
     container_name: surekha71-employee
     ports:
-      - "8057:80"
+      - "8618:80"
     depends_on:
       - backend
 
@@ -41,7 +41,7 @@ services:
     build: ./HR-Side
     container_name: surekha71-hr
     ports:
-      - "8058:80"
+      - "8619:80"
     depends_on:
       - backend
 
