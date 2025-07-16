@@ -114,5 +114,5 @@ app.get('/api/payslips/:empCode', async (req, res) => {
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server running on http://51.20.82.55:${port}`);
+    console.log(`Server running on http://13.61.2.118:${port}`);
 });
