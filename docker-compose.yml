@@ -31,7 +31,7 @@ services:
 
   employee-side:
     build: ./Employee-Side
-    container_name: surekha71-employee
+    container_name: surekha731-employee
     ports:
       - "8618:80"
     depends_on:
