@@ -22,7 +22,7 @@ services:
     depends_on:
       - postgres
     environment:
-      - PORT=3032
+      - PORT=3609
       - PGUSER=postgres
       - PGPASSWORD=admin123
       - PGDATABASE=payslip_db
